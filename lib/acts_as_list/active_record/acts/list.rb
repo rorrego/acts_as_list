@@ -35,7 +35,7 @@ module ActiveRecord
         # * +add_new_at+ - specifies whether objects get added to the :top or :bottom of the list. (default: +bottom+)
         #                   `nil` will result in new items not being added to the list on create
         def acts_as_list(options = {})
-          configuration = { column: "position", scope: "1 = 1", top_of_list: 1, add_new_at: :bottom}
+          configuration = { :column=> "position", :scope=> "1 = 1", :top_of_list=> 1, :add_new_at=> :bottom}
           configuration.update(options) if options.is_a?(Hash)
 
           configuration[:scope] = "#{configuration[:scope]}_id".intern if configuration[:scope].is_a?(Symbol) && configuration[:scope].to_s !~ /_id$/
